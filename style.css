@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background: url(assets/eilis-garvey-fhOQfT1eVEA-unsplash.jpg) repeat;
+    background-size: cover;
+    
+}
+header {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    height: 80px;
+    background-color: hsl(34, 64%, 28%);
+    border-bottom: hsl(46, 78%, 43%) 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header button {
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    font-size: 1.25rem;
+    padding: 5px;
+    background-color: tan;
+    border-radius: 10px;
+    border: hsl(46, 78%, 43%) 3px solid;
+}
+header button:hover {
+    cursor: pointer;
+}
+header h1 {
+    font-size: 3rem;
+    color: rgb(8, 8, 8);
+    font-style: italic;
+}
+main {
+    position: relative;
+    top: 80px;
+    display: flex;
+    height: 100%;
+    min-height: 0;
+}
+
+.container {
+    width: 90vw;
+    background-color: rgb(97, 78, 53);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    font-family: "Sofia", sans-serif;
+    border-left: 5px hsl(46, 78%, 43%) groove ;
+    border-right: 5px hsl(46, 78%, 43%) groove ;
+    min-height: 0;
+}
+
+.card {
+    background-color: tan;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 15px;
+    border-radius: 10px;
+    border: hsl(46, 78%, 43%) 3px solid;
+    box-shadow:  1px 3px 3px 4px hsl(0, 0%, 16%);
+    min-width: 0;
+    
+    
+}
+.card:hover {
+    cursor: pointer;
+}
+.title {
+    margin-top: 15px;
+    font-size: 2.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+.author {
+    margin-top: 5px;
+    font-size: 1.25rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+}
+/* might need to make the dialog sticky */
+dialog {
+    display: none;
+}
+dialog[open] {
+    width: 60vw;
+    height: 60vh;
+    margin: auto;
+    background-color: tan;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    position: relative;
+    text-align: center;
+}
+dialog:hover {
+    cursor: default;
+}
+.modal-title {
+    margin-top: 50px;
+    font-size: 4rem;
+
+}
+.modal-author {
+    margin-top: 30px;
+    margin-left: 50%;
+    font-size: 2rem;
+}
+.id {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.shared-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding: 0 30px;
+}
+.page-count {
+    font-size: 1.5rem;
+}
+.status {
+    display: flex;
+    align-items: center;
+}
+.read {
+    font-size: 1.25rem;
+    margin-right: 10px;
+}
+.checkbox {
+    width: 30px;
+    height: 30px;
+    border: 2px black solid;
+}
+.yes::after {
+    content: "✔";
+    font-size: 1.75rem;
+    position: relative;
+    bottom: 8px;
+}
+.no::after {
+    content: "X";
+    font-size: 1.75rem;
+    position: relative;
+    bottom: 8px;
+}
+dialog::backdrop {
+    background-color: hsla(0, 0%, 0%, 0.418);
+}
