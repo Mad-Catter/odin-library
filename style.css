@@ -11,6 +11,10 @@ body {
     background-size: cover;
     
 }
+button:hover {
+    cursor: pointer;
+}
+/* Header Section */
 header {
     width: 100%;
     position: fixed;
@@ -22,7 +26,7 @@ header {
     justify-content: center;
     align-items: center;
 }
-header button {
+header > button {
     position: absolute;
     bottom: 10px;
     right: 50px;
@@ -32,7 +36,7 @@ header button {
     border-radius: 10px;
     border: hsl(46, 78%, 43%) 3px solid;
 }
-header button:hover {
+header > button:hover {
     cursor: pointer;
 }
 header h1 {
@@ -40,6 +44,74 @@ header h1 {
     color: rgb(8, 8, 8);
     font-style: italic;
 }
+/* Modal Rules */
+.modal {
+    display: none;
+}
+.modal[open] {
+    width: 60vw;
+    height: 60vh;
+    margin: auto;
+    background-color: tan;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    position: fixed;
+    text-align: center;
+}
+.modal:hover {
+    cursor: default;
+}
+.modal::backdrop {
+    background-color: hsla(0, 0%, 0%, 0.418);
+}
+/* Form Section */
+form {
+    width: 100%;
+    height: 90%;
+    font-family: "Sofia", sans-serif;
+}
+legend {
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+    top: 35px;
+}
+.form-grid {
+    display: grid;
+    width: 100%;
+    height: 90%;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    align-items: center;
+}
+.form-grid label {
+    font-size: 2rem;
+    display: block;
+}
+.form-grid input[type=text],
+.form-grid input[type=tel] {
+    width: 300px;
+    height: 40px;
+    font-family: "Sofia", sans-serif;
+    border-radius: 5px;
+    background-color: hsl(45, 46%, 90%);
+    box-shadow: 2.5px 2.5px rgb(0, 0, 0);
+}
+input:user-invalid {
+    border: red 3px solid;
+}
+form button {
+    font-size: 1.25rem;
+    padding: 5px;
+    border-radius: 10px;
+    border: hsl(46, 78%, 43%) 3px solid;
+    background-color: hsl(35, 75%, 65%);
+    font-family: "Sofia", sans-serif;
+    font-weight: bold;
+}
+
+/* Body Section */
 main {
     position: relative;
     top: 80px;
@@ -72,8 +144,6 @@ main {
     border: hsl(46, 78%, 43%) 3px solid;
     box-shadow:  1px 3px 3px 4px hsl(0, 0%, 16%);
     min-width: 0;
-    
-    
 }
 .card:hover {
     cursor: pointer;
@@ -95,25 +165,8 @@ main {
     width: 100%;
     text-align: center;
 }
-/* might need to make the dialog sticky */
-dialog {
-    display: none;
-}
-dialog[open] {
-    width: 60vw;
-    height: 60vh;
-    margin: auto;
-    background-color: tan;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
-    position: relative;
-    text-align: center;
-}
-dialog:hover {
-    cursor: default;
-}
+/* Book Modal Section */
+
 .modal-title {
     margin-top: 50px;
     font-size: 4rem;
@@ -124,11 +177,7 @@ dialog:hover {
     margin-left: 50%;
     font-size: 2rem;
 }
-.id {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
+
 .shared-line {
     display: flex;
     justify-content: space-between;
@@ -138,31 +187,115 @@ dialog:hover {
 .page-count {
     font-size: 1.5rem;
 }
+/* Read status */
 .status {
     display: flex;
     align-items: center;
 }
+.status:hover {
+    cursor: pointer;
+}
+
 .read {
     font-size: 1.25rem;
     margin-right: 10px;
+}
+
+.read:hover {
+    cursor: pointer;
 }
 .checkbox {
     width: 30px;
     height: 30px;
     border: 2px black solid;
+    appearance: none;
+    position: relative;
+}
+.checkbox:hover {
+    cursor: pointer;
 }
 .yes::after {
     content: "✔";
     font-size: 1.75rem;
-    position: relative;
-    bottom: 8px;
+    position: absolute;
+    bottom: -4px;
+    left: 3px;
 }
 .no::after {
     content: "X";
     font-size: 1.75rem;
-    position: relative;
-    bottom: 8px;
+    position: absolute;
+    bottom: -4px;
+    left: 4px;
 }
-dialog::backdrop {
-    background-color: hsla(0, 0%, 0%, 0.418);
+
+.id {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+/* Delete Book Section */
+.delete-button {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: hsla(34, 74%, 55%, 0.486);
+    font-family: "Sofia", sans-serif;
+    padding: 3px;
+    border-radius: 5px;
+}
+.delete-button:hover {
+    cursor: pointer;
+}
+.delete-dialog {
+    position: absolute;
+    bottom: 43px;
+    left: 878px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: hsl(35, 75%, 65%);
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+.delete-dialog::before {
+  content: "";
+  position: absolute;
+  bottom: -31px; 
+  right: 0px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: black transparent transparent transparent; 
+  z-index: 4;
+}
+.delete-dialog::after {
+  content: "";
+  position: absolute;
+  bottom: -24px; 
+  right: 4px;
+  border-width: 13px;
+  border-style: solid;
+  border-color: hsl(35, 75%, 65%) transparent transparent transparent; 
+  z-index: 5;
+}
+
+.cd-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0 20px;
+    margin-top: 5px;
+}
+
+.cd-buttons button {
+    background-color: hsl(34, 64%, 28%);
+    padding: 3px;
+    width: 50px;
+    font-size: 1rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: "Sofia", sans-serif;
+    font-weight: bold;
+}
+.cd-buttons button:hover {
+    cursor: pointer;
 }

@@ -23,20 +23,61 @@ const jekyllNHyde = new BookConstructor("Strange Case of Dr Jekyll and Mr Hyde",
 const myLibrary = [hobbit, illiad, gobletOfFire, pictureOfDorianGray, jekyllNHyde];
 console.log(hobbit.statement())
 
-const testDiv = document.querySelector("#the-test")
-const dialog = document.querySelector("dialog")
-testDiv.addEventListener("click", e => {
-    dialog.showModal();
+
+const bookButton = document.querySelector(".book-button");
+const formModal = document.querySelector(".book-form");
+bookButton.addEventListener("click", e => {
+    formModal.showModal();
 })
-dialog.addEventListener("click", e => {
+formModal.addEventListener("click", e => {
     e.stopPropagation();
-    const dialogDimensions = dialog.getBoundingClientRect()
+    const formModalDimensions = formModal.getBoundingClientRect();
     if (
-        e.clientX < dialogDimensions.left ||
-        e.clientX > dialogDimensions.right ||
-        e.clientY < dialogDimensions.top ||
-        e.clientY > dialogDimensions.bottom
+        e.clientX < formModalDimensions.left ||
+        e.clientX > formModalDimensions.right ||
+        e.clientY < formModalDimensions.top ||
+        e.clientY > formModalDimensions.bottom
     ) {
-        dialog.close()
+        formModal.close();
     }
+})
+
+const testDiv = document.querySelector("#the-test")
+const descModal = document.querySelector(".desc-modal")
+
+testDiv.addEventListener("click", e => {
+    descModal.showModal();
+})
+descModal.addEventListener("click", e => {
+    e.stopPropagation();
+    const descModalDimensions = descModal.getBoundingClientRect();
+    if (
+        e.clientX < descModalDimensions.left ||
+        e.clientX > descModalDimensions.right ||
+        e.clientY < descModalDimensions.top ||
+        e.clientY > descModalDimensions.bottom
+    ) {
+        descModal.close();
+    }
+})
+
+const testButton = document.querySelector(".delete-button");
+const deleteDialog = document.querySelector(".delete-dialog");
+const denyButton = document.querySelector(".deny")
+testButton.addEventListener("click", e => {
+    deleteDialog.show();
+})
+denyButton.addEventListener("click", e => {
+    deleteDialog.close();
+})
+
+// Book Adding Section
+const submitButton = document.querySelector(".submit");
+submitButton.addEventListener("click", e => {
+    e.preventDefault();
+})
+
+const newRead = document.querySelector("#input-confirm")
+newRead.addEventListener("click", e => {
+    newRead.classList.toggle("yes");
 })

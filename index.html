@@ -12,24 +12,56 @@
 <body>
     <header>
         <h1>Your Library</h1>
-        <button type="button">Add a new book!</button>
+        <button type="button" class="book-button">Add a new book!</button>
+        <dialog class="book-form modal">
+            <form action="post">
+                <legend>Add a book to the library</legend>
+                <div class="form-grid">
+                    <div class="input-container">
+                        <label for="input-title">Title*:</label>
+                        <input type="text" name="input-title" id="input-title" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="input-author">Author*:</label>
+                        <input type="text" name="input-author" id="input-author" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="input-page-count">Page Count*:</label>
+                        <input type="tel" name="input-page-count" id="input-page-count" maxlength="5" pattern="\d*"required>
+                    </div>
+                    <div class="input-container">
+                        <label for="input-confirm">Read?:</label>
+                        <input type="checkbox" name="input-confirm" id="input-confirm" class="checkbox">
+                    </div>
+                </div>
+                <button type="submit" class="submit">Submit New Book</button>
+            </form>
+        </dialog>
     </header>
     <main>
         <div class="container">
             <div class="card" id="the-test">
                 <h3 class="title">The Neverending Story: two electric thingamig the reending</h3>
                 <p class="author">By: Johnathan Harker</p>
-                <dialog>
+                <dialog class="modal desc-modal">
                     <h1 class="modal-title">The Neverending Story: two electric thingamig the reending</h1>
                     <h3 class="modal-author">By: Johnathan Harker</h3>
                     <div class="shared-line">
                         <p class="page-count">Page Count: 405</p>
                         <div class="status">
-                            <p class="read">Read:</p>
-                            <div class="checkbox no"></div>
+                            <label for="example" class="read">Read:</label>
+                            <input type="checkbox" id="example" class="checkbox no"></input>
                         </div>
                     </div>
                     <p class="id">ID: aecde4f7-92b9-4a07-a11d-5357cdc9e2f6</p>
+                    <button type="button" class="delete-button">Remove book?</button>
+                    <dialog class="delete-dialog">
+                        <p>Truly remove this book?</p>
+                        <div class="cd-buttons">
+                            <button type="button" class="confirm">Yes</button>
+                            <button type="button" class="deny">No</button>
+                        </div>
+                    </dialog>
                 </dialog>
             </div>
             <div class="card">
